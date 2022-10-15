@@ -1,0 +1,8 @@
+{
+  "short_name": "Rsync Deploy React",
+  "name": "Rsync Deploy React App",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

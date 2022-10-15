@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+}
+
+.App p {
+  font-size: 25px;
+}
+
+.Logotypes {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.Logotypes img {
+  width: 200px;
+  height: fit-content;
+}
