@@ -1,0 +1,28 @@
+name: Deploy 
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+
+    runs-on: ubuntu-latest
+
+    env:
+      SSH_KEY: ${{secrets.SSH_KEY}}
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 16
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+    - run: mkdir ~/.ssh
+    - run: 'echo "$SSH_KEY" >> ~/.ssh/id_rsa_tutorials'
+    - run: chmod 400 ~/.ssh/id_rsa_tutorials
+    - run: echo -e "Host tutorials\n\tUser tutorials\n\tHostname 45.76.5.44\n\tIdentityFile ~/.ssh/id_rsa_tutorials\n\tStrictHostKeyChecking No" >> ~/.ssh/config
+    - run: npm install
+    - run: npm build
+    - run: rsync -avz --progress build/ tutorials:/home/tutorials/rsync-deploy-react-app --delete
