@@ -1,9 +1,15 @@
+body {
+  padding-bottom: 50px;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App p {
-  font-size: 25px;
+  font-size: 20px;
+  text-align: center;
 }
 
 .Logotypes {
@@ -17,4 +23,20 @@
 .Logotypes img {
   width: 200px;
   height: fit-content;
+}
+
+@media only screen and (max-width: 768px) {
+  .Logotypes {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .App {
+    flex-direction: column-reverse;
+  }
+
+  .App p {
+    font-size: 15px;
+    padding-bottom: 15px;
+  }
 }
